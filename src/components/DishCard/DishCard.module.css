@@ -1,0 +1,40 @@
+.dishCard {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .dishCardImg {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .dishCardBody {
+    padding: 15px;
+  }
+  
+  .dishCardTitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .dishCardDescription {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  .dishCardPrice {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  @media (max-width: 768px) {
+    .dishCard {
+      max-width: 100%;
+    }
+  }
+  

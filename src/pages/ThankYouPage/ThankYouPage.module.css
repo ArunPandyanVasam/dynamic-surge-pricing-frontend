@@ -1,0 +1,16 @@
+.pageContainer {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .thankYouMessage {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  @media (max-width: 768px) {
+    .thankYouMessage {
+      font-size: 1.2rem;
+    }
+  }
+  

@@ -1,0 +1,23 @@
+.pageContainer {
+    margin-top: 20px;
+  }
+  
+  .dishGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  @media (max-width: 768px) {
+    .dishGrid {
+      justify-content: space-around;
+    }
+  }
+  
+  .dishTitle {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  

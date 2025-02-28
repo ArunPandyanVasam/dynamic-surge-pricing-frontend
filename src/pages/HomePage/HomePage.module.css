@@ -1,23 +1,27 @@
 .pageContainer {
-    margin-top: 20px;
-  }
-  
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.dishTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dishGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
   .dishGrid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    justify-content: space-around;
   }
-  
-  @media (max-width: 768px) {
-    .dishGrid {
-      justify-content: space-around;
-    }
-  }
-  
-  .dishTitle {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
+}

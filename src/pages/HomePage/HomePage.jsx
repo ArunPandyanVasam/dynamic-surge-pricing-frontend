@@ -21,7 +21,7 @@ const dishes = [
     img: "/assets/pasta.jpg",
   },
   {
-    id: 1,
+    id: 3,
     name: "Spicy Chicken",
     price: 10,
     rating: 4.5,
@@ -29,7 +29,7 @@ const dishes = [
     img: "/assets/pasta.jpg",
   },
   {
-    id: 2,
+    id: 4,
     name: "Pasta",
     price: 12,
     rating: 4.2,
@@ -37,7 +37,7 @@ const dishes = [
     img: "/assets/pasta.jpg",
   },
   {
-    id: 1,
+    id: 5,
     name: "Spicy Chicken",
     price: 10,
     rating: 4.5,
@@ -45,7 +45,7 @@ const dishes = [
     img: "/assets/pasta.jpg",
   },
   {
-    id: 2,
+    id: 6,
     name: "Pasta",
     price: 12,
     rating: 4.2,

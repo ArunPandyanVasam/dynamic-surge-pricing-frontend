@@ -1,0 +1,107 @@
+/* Modal Container */
+.modal-content {
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 500px;
+    margin: auto;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  /* Modal Header */
+  .modal-header {
+    border-bottom: none;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Modal Body */
+  .modal-body {
+    text-align: center;
+    padding: 15px 20px;
+  }
+  
+  /* Dish Details */
+  .modal-body h5 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .modal-body p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  /* Input Field */
+  .modal-body input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s ease-in-out;
+  }
+  
+  .modal-body input:focus {
+    border-color: #ff7f50;
+  }
+  
+  /* Modal Footer (Buttons) */
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+  }
+  
+  /* Button Styling */
+  .modal-footer button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px 14px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+  }
+  
+  .modal-footer .btn-secondary {
+    background: #ccc;
+    color: #333;
+  }
+  
+  .modal-footer .btn-secondary:hover {
+    background: #b3b3b3;
+  }
+  
+  .modal-footer .btn-success {
+    background: #27ae60;
+    color: white;
+  }
+  
+  .modal-footer .btn-success:hover {
+    background: #219150;
+  }
+  
+  /* RESPONSIVENESS */
+  @media (max-width: 600px) {
+    .modal-content {
+      max-width: 90%;
+      padding: 15px;
+    }
+  
+    .modal-body input {
+      font-size: 0.9rem;
+      padding: 8px;
+    }
+  
+    .modal-footer button {
+      font-size: 0.9rem;
+      padding: 8px 12px;
+    }
+  }
+  

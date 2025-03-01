@@ -52,11 +52,9 @@ const dishes = [
     description: "Creamy pasta with mushrooms",
     img: "/assets/pasta.jpg",
   }
-  // Add more dishes as needed
 ];
 
 const HomePage = () => {
-  console.log(dishes); // This will log the dishes array to the console
   return (
     <Container className={styles.pageContainer}>
       <h1 className={styles.dishTitle}> Discover Your Next Favorite Meal </h1>

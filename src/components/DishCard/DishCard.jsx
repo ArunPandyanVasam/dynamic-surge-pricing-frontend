@@ -22,7 +22,7 @@ const DishCard = ({ dish }) => {
             ⭐ {dish.rating} | ${dish.price}
           </Card.Text>
           <Button variant="primary" onClick={() => setShowModal(true)}>
-            Order Now
+            Add to Cart
           </Button>
         </Card.Body>
       </Card>

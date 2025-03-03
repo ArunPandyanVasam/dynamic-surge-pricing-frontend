@@ -55,12 +55,12 @@ button {
   font-size: 1rem;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
+  /* transition: background 0.2s ease-in-out; */
 }
 
-button:hover {
+/* button:hover {
   background: #ff6347;
-}
+} */
 
 @media (max-width: 768px) {
   .dishCard {

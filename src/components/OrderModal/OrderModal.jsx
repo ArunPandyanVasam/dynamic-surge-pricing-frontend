@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import styles from "./OrderModal.module.css"; // Import the CSS module
+import styles from "./OrderModal.module.css";
 
 const OrderModal = ({ show, handleClose, dish }) => {
   return (
@@ -12,10 +12,11 @@ const OrderModal = ({ show, handleClose, dish }) => {
         <Modal.Body className={styles.modalBody}>
           <h5>{dish.name}</h5>
           <p>⭐ {dish.rating} | ${dish.price}</p>
+          <p>{dish.description}</p>
           <input
             type="text"
             placeholder="Enter your city/address"
-            className={styles.inputField} // Apply the input styling
+            className={styles.inputField}
           />
         </Modal.Body>
         <Modal.Footer className={styles.modalFooter}>

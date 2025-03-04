@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Navbar } from "react-bootstrap";
 import { FaShoppingCart } from "react-icons/fa";
+import styles from "./Header.module.css";
 
 const Header = () => {
     const [cartCount, setCartCount] = useState(0);

@@ -11,7 +11,7 @@ const App = () => {
       <Router>
         <Header cartCount={cartCount} />
         <Routes>
-          <Route path='/' element={<HomePage />} />
+          <Route path='/' element={<HomePage setCartCount={setCartCount}/>} />
         </Routes>
       </Router>
   )

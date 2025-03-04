@@ -4,8 +4,8 @@ import styles from "./DishCard.module.css";
 import OrderModal from "../OrderModal/OrderModal";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-const DishCard = ({ dish }) => {
-  const [showModal, setShowModal] = useState(false);
+const DishCard = ({ dish, setCartCount }) => {
+  // const [showModal, setShowModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
   const increaseQuantity = () => {
@@ -24,7 +24,6 @@ const DishCard = ({ dish }) => {
         <Card.Img variant="top" src={dish.img} className={styles.dishCardImg} />
 
         <Card.Body className={styles.dishCardBody}>
-
           <Card.Title className={styles.dishCardTitle}>
             {" "}
             {dish.name}{" "}
@@ -39,18 +38,31 @@ const DishCard = ({ dish }) => {
           </Card.Text>
 
           <div className={styles.quantitySelector}>
-            <Button variant="outline-secondary" onClick={decreaseQuantity}>
+            <Button
+              variant="outline-secondary"
+              onClick={() => setQuantity(Math.max(1, quantity - 1))}
+            >
               <FaMinus />
             </Button>
             <span className={styles.quantityValue}>{quantity}</span>
-            <Button variant="outline-secondary" onClick={increaseQuantity}>
+            <Button
+              variant="outline-secondary"
+              onClick={() => setQuantity(quantity + 1)}
+            >
               <FaPlus />
             </Button>
           </div>
 
-          <Button variant="primary" onClick={() => setShowModal(true)}>
+          <Button
+            variant="primary"
+            onClick={() => setCartCount((prev) => prev + quantity)}
+          >
             Add to Cart
           </Button>
+
+          {/* <Button variant="primary" onClick={() => setShowModal(true)}>
+            Add to Cart
+          </Button> */}
         </Card.Body>
       </Card>
 
@@ -59,7 +71,6 @@ const DishCard = ({ dish }) => {
         handleClose={() => setShowModal(false)}
         dish={dish}
       /> */}
-
     </>
   );
 };

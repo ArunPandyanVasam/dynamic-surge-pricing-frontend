@@ -54,14 +54,14 @@ const dishes = [
   }
 ];
 
-const HomePage = () => {
+const HomePage = ({ setCartCount }) => {
   return (
     <Container className={styles.pageContainer}>
       <h1 className={styles.dishTitle}> Discover Your Next Favorite Meal </h1>
       <Row className={styles.dishGrid}>
         {dishes.map((dish) => (
           <Col key={dish.id} sm={12} md={6} lg={4}>
-            <DishCard dish={dish} />
+            <DishCard dish={dish} setCartCount={setCartCount}/>
           </Col>
         ))}
       </Row>

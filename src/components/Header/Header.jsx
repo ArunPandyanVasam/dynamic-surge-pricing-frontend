@@ -3,8 +3,8 @@ import { Container, Navbar } from "react-bootstrap";
 import { FaShoppingCart } from "react-icons/fa";
 import styles from "./Header.module.css";
 
-const Header = () => {
-    const [cartCount, setCartCount] = useState(0);
+const Header = ({cartCount}) => {
+    
   return (
     <Navbar className={styles.navbar}>
       <Container>

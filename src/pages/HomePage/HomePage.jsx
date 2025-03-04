@@ -50,7 +50,7 @@ const dishes = [
     price: 12,
     rating: 4.2,
     description: "Creamy pasta with mushrooms",
-    img: "/assets/pasta.jpg",
+    img: "/assets/pasta.jpg", 
   }
 ];
 

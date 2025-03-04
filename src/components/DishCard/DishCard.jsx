@@ -9,7 +9,7 @@ const DishCard = ({ dish }) => {
   const [quantity, setQuantity] = useState(1);
 
   const increaseQuantity = () => {
-    setQuantity(quantity+1);
+    setQuantity(quantity + 1);
   };
 
   const decreaseQuantity = () => {
@@ -18,24 +18,27 @@ const DishCard = ({ dish }) => {
     }
   };
 
-
   return (
     <>
       <Card className={styles.dishCard}>
         <Card.Img variant="top" src={dish.img} className={styles.dishCardImg} />
+
         <Card.Body className={styles.dishCardBody}>
+
           <Card.Title className={styles.dishCardTitle}>
             {" "}
             {dish.name}{" "}
           </Card.Title>
+
           <Card.Text className={styles.dishCardDescription}>
             {dish.description}
           </Card.Text>
+
           <Card.Text className={styles.dishCardPrice}>
             ⭐ {dish.rating} | ${dish.price}
           </Card.Text>
 
-          <div  className={styles.quantitySelector}> 
+          <div className={styles.quantitySelector}>
             <Button variant="outline-secondary" onClick={decreaseQuantity}>
               <FaMinus />
             </Button>
@@ -50,11 +53,13 @@ const DishCard = ({ dish }) => {
           </Button>
         </Card.Body>
       </Card>
-      <OrderModal
+
+      {/* <OrderModal
         show={showModal}
         handleClose={() => setShowModal(false)}
         dish={dish}
-      />
+      /> */}
+
     </>
   );
 };

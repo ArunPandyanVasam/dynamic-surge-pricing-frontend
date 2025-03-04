@@ -2,9 +2,22 @@ import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import styles from "./DishCard.module.css";
 import OrderModal from "../OrderModal/OrderModal";
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 const DishCard = ({ dish }) => {
   const [showModal, setShowModal] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+
+  const increaseQuantity = () => {
+    setQuantity(quantity+1);
+  };
+
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
 
   return (
     <>
@@ -21,6 +34,17 @@ const DishCard = ({ dish }) => {
           <Card.Text className={styles.dishCardPrice}>
             ⭐ {dish.rating} | ${dish.price}
           </Card.Text>
+
+          <div  className={styles.quantitySelector}> 
+            <Button variant="outline-secondary" onClick={decreaseQuantity}>
+              <FaMinus />
+            </Button>
+            <span className={styles.quantityValue}>{quantity}</span>
+            <Button variant="outline-secondary" onClick={increaseQuantity}>
+              <FaPlus />
+            </Button>
+          </div>
+
           <Button variant="primary" onClick={() => setShowModal(true)}>
             Add to Cart
           </Button>

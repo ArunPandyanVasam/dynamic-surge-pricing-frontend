@@ -5,7 +5,6 @@ import HomePage from './pages/HomePage/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header/Header';
 
-
 const App = () => {
   return (
       <Router>

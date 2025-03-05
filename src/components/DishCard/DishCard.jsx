@@ -1,22 +1,12 @@
 import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import styles from "./DishCard.module.css";
-import OrderModal from "../OrderModal/OrderModal";
+// import OrderModal from "../OrderModal/OrderModal";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
 const DishCard = ({ dish, setCartCount }) => {
   // const [showModal, setShowModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
-
-  const increaseQuantity = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
 
   return (
     <>

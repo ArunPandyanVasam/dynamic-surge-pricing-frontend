@@ -35,22 +35,6 @@ const dishes = [
     rating: 4.2,
     description: "Creamy pasta with mushrooms",
     img: "/assets/pasta.jpg",
-  },
-  {
-    id: 5,
-    name: "Spicy Chicken",
-    price: 10,
-    rating: 4.5,
-    description: "Spicy chicken with garlic sauce",
-    img: "/assets/pasta.jpg",
-  },
-  {
-    id: 6,
-    name: "Pasta",
-    price: 12,
-    rating: 4.2,
-    description: "Creamy pasta with mushrooms",
-    img: "/assets/pasta.jpg", 
   }
 ];
 

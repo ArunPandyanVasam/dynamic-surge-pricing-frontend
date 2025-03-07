@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import styles from "./HomePage.module.css";
@@ -10,7 +11,7 @@ const dishes = [
     price: 10,
     rating: 4.5,
     description: "Spicy chicken with garlic sauce",
-    img: "/assets/pasta.jpg",
+    img: "/assets/chicken.jpg",
   },
   {
     id: 2,
@@ -22,14 +23,14 @@ const dishes = [
   }
 ];
 
-const HomePage = ({ setCartCount }) => {
+const HomePage = ({ setCart, cart }) => {
   return (
     <Container className={styles.pageContainer}>
       <h1 className={styles.dishTitle}> Discover Your Next Favorite Meal </h1>
       <Row className={styles.dishGrid}>
         {dishes.map((dish) => (
           <Col key={dish.id} sm={12} md={6} lg={4}>
-            <DishCard dish={dish} setCartCount={setCartCount} />
+            <DishCard dish={dish} setCart={setCart} cart={cart} />
           </Col>
         ))}
       </Row>

@@ -1,13 +1,19 @@
 import React, { useState } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form, Table } from "react-bootstrap";
 import styles from "./OrderModal.module.css";
 
 const OrderModal = ({ show, handleClose, dish, quantity }) => {
   const [location, setLocation] = useState("");
+  const [surgePricing, setSurgePricing] = useState(null);
 
   const handleGetSurgePricing = () => {
-    console.log("Fetching surge pricing for", location);
-    // Implement the surge pricing logic
+    // Dynamic surge pricing logic
+    const basePrice = dish.price * quantity;
+    const weatherSurcharge = (basePrice * 0.2).toFixed(2); // 20% of base price
+    const trafficSurcharge = (basePrice * 0.3).toFixed(2); // 30% of base price
+    const totalSurgePrice = (basePrice + parseFloat(weatherSurcharge) + parseFloat(trafficSurcharge)).toFixed(2);
+    
+    setSurgePricing({ basePrice, weatherSurcharge, trafficSurcharge, totalSurgePrice });
   };
 
   return (
@@ -30,6 +36,34 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
               onChange={(e) => setLocation(e.target.value)}
             />
           </Form.Group>
+          {surgePricing && (
+            <Table striped bordered hover className={styles.surgeTable}>
+              <thead>
+                <tr>
+                  <th>Factor</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Base Price</td>
+                  <td>${surgePricing.basePrice}</td>
+                </tr>
+                <tr>
+                  <td>Weather Surcharge (20%)</td>
+                  <td>${surgePricing.weatherSurcharge}</td>
+                </tr>
+                <tr>
+                  <td>Traffic Surcharge (30%)</td>
+                  <td>${surgePricing.trafficSurcharge}</td>
+                </tr>
+                <tr>
+                  <td><strong>Total Surge Price</strong></td>
+                  <td><strong>${surgePricing.totalSurgePrice}</strong></td>
+                </tr>
+              </tbody>
+            </Table>
+          )}
         </Modal.Body>
         <Modal.Footer className={styles.modalFooter}>
           <Button className={styles.btnSecondary} onClick={handleClose}>

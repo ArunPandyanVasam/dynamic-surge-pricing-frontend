@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header/Header';
-import CartComponent from './components/CartComponent/CartComponent';
 import OrderConfirmation from './pages/OrderConfirmation/OrderConfirmation';
+import ThankYouPage from './pages/ThankYouPage/ThankYouPage';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -15,8 +15,8 @@ const App = () => {
       <Header cartCount={cart.reduce((acc, item) => acc + item.quantity, 0)} />
       <Routes>
         <Route path='/' element={<HomePage setCart={setCart} cart={cart} />} />
-        <Route path='/cart' element={<CartComponent cart={cart} setCart={setCart} />} />
         <Route path='/order-confirmation' element={<OrderConfirmation />} />
+        <Route path='/thank-you' element={<ThankYouPage />} />
       </Routes>
     </Router>
   );

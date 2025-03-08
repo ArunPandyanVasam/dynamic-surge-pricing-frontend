@@ -13,14 +13,25 @@ const OrderConfirmation = () => {
     contact: "",
     paymentMethod: "Credit Card",
   });
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
 
   const handleConfirmOrder = () => {
-    alert("Order Confirmed! Thank you for your purchase.");
-    navigate("/");
+    if (!userDetails.name || !userDetails.contact) {
+      setError("Name and Contact Number are required.");
+    } else {
+      // Store the user details and navigate to ThankYouPage
+      navigate("/thank-you", {
+        state: {
+          name: userDetails.name,
+          contact: userDetails.contact,
+          totalPrice: surgePricing.totalSurgePrice,
+        },
+      });
+    }
   };
 
   if (!dish || !surgePricing) {
@@ -35,6 +46,8 @@ const OrderConfirmation = () => {
           <p className={styles.orderDetails}><strong>Dish:</strong> {dish.name} (x{quantity})</p>
           <p className={styles.orderDetails}><strong>Location:</strong> {userLocation}</p>
           <p className={styles.totalPrice}><strong>Total Price:</strong> ${surgePricing.totalSurgePrice}</p>
+          
+          {error && <p className={styles.errorMessage}>{error}</p>}
           
           <Form>
             <Form.Group className={styles.formGroup}>

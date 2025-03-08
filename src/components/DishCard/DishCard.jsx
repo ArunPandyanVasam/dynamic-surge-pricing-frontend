@@ -4,7 +4,7 @@ import { Button, Card } from "react-bootstrap";
 import styles from "./DishCard.module.css";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-const DishCard = ({ dish, setCart, cart }) => {
+const DishCard = ({ dish, setCart}) => {
   const [quantity, setQuantity] = useState(1);
 
   const addToCart = () => {

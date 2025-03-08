@@ -19,7 +19,7 @@ const CartComponent = ({ cart, setCart }) => {
         {cart.map((item) => (
           <ListGroup.Item key={item.id} className={styles.cartItem}>
             <div className={styles.itemDetails}>
-              <span className={styles.itemName}>{item.name}</span> - 
+              <span className={styles.itemName}>{item.name}</span> 
               <span className={styles.itemPrice}> ${item.price} x {item.quantity} = ${item.price * item.quantity}</span>
             </div>
             <div className={styles.quantityControls}>

@@ -3,22 +3,11 @@ import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import styles from "./DishCard.module.css";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import OrderModal from "../OrderModal/OrderModal";
 
-const DishCard = ({ dish, setCart}) => {
+const DishCard = ({ dish, setCart }) => {
   const [quantity, setQuantity] = useState(1);
-
-  const addToCart = () => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === dish.id);
-      if (existingItem) {
-        return prevCart.map((item) =>
-          item.id === dish.id ? { ...item, quantity: item.quantity + quantity } : item
-        );
-      } else {
-        return [...prevCart, { ...dish, quantity }];
-      }
-    });
-  };
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <Card className={styles.dishCard}>
@@ -36,8 +25,11 @@ const DishCard = ({ dish, setCart}) => {
             <FaPlus />
           </Button>
         </div>
-        <Button variant="primary" onClick={addToCart}>Add to Cart</Button>
+        <Button variant="primary" onClick={() => setShowModal(true)}>
+          Add to Cart
+        </Button>
       </Card.Body>
+      <OrderModal show={showModal} handleClose={() => setShowModal(false)} dish={dish} quantity={quantity} setCart={setCart} />
     </Card>
   );
 };

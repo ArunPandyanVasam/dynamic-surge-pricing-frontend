@@ -11,7 +11,7 @@ const dishes = [
     price: 10,
     rating: 4.5,
     description: "Spicy chicken with garlic sauce",
-    img: "/assets/chicken.jpg",
+    img: "/assets/pasta.jpg",
   },
   {
     id: 2,

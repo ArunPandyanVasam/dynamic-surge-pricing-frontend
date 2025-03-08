@@ -24,8 +24,15 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
     });
   };
 
+  const handleCancel = () => {
+    // Reset the location and surgePricing when the modal is closed
+    setLocation("");
+    setSurgePricing(null);
+    handleClose(); // This will close the modal
+  };
+
   return (
-    <Modal show={show} onHide={handleClose} centered>
+    <Modal show={show} onHide={handleCancel} centered>
       <div className={styles.modalContent}>
         <Modal.Header closeButton className={styles.modalHeader}>
           <Modal.Title>Enter Your Location</Modal.Title>
@@ -74,7 +81,7 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
           )}
         </Modal.Body>
         <Modal.Footer className={styles.modalFooter}>
-          <Button className={styles.btnSecondary} onClick={handleClose}>
+          <Button className={styles.btnSecondary} onClick={handleCancel}>
             Cancel
           </Button>
           {!surgePricing ? (

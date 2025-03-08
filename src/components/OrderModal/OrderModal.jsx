@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Table } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import styles from "./OrderModal.module.css";
 
 const OrderModal = ({ show, handleClose, dish, quantity }) => {
   const [location, setLocation] = useState("");
   const [surgePricing, setSurgePricing] = useState(null);
+  const navigate = useNavigate();
 
   const handleGetSurgePricing = () => {
     // Dynamic surge pricing logic
@@ -14,6 +16,12 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
     const totalSurgePrice = (basePrice + parseFloat(weatherSurcharge) + parseFloat(trafficSurcharge)).toFixed(2);
     
     setSurgePricing({ basePrice, weatherSurcharge, trafficSurcharge, totalSurgePrice });
+  };
+
+  const handleOrderConfirm = () => {
+    navigate("/order-confirmation", {
+      state: { dish, quantity, surgePricing, location }
+    });
   };
 
   return (
@@ -69,9 +77,15 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
           <Button className={styles.btnSecondary} onClick={handleClose}>
             Cancel
           </Button>
-          <Button className={styles.btnSuccess} onClick={handleGetSurgePricing}>
-            Get Surge Pricing
-          </Button>
+          {!surgePricing ? (
+            <Button className={styles.btnSuccess} onClick={handleGetSurgePricing}>
+              Get Surge Pricing
+            </Button>
+          ) : (
+            <Button className={styles.btnPrimary} onClick={handleOrderConfirm}>
+              Confirm Order
+            </Button>
+          )}
         </Modal.Footer>
       </div>
     </Modal>

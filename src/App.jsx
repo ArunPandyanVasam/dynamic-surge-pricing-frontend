@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header/Header';
 import CartComponent from './components/CartComponent/CartComponent';
+import OrderConfirmation from './pages/OrderConfirmation/OrderConfirmation';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -15,6 +16,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<HomePage setCart={setCart} cart={cart} />} />
         <Route path='/cart' element={<CartComponent cart={cart} setCart={setCart} />} />
+        <Route path='/order-confirmation' element={<OrderConfirmation />} />
       </Routes>
     </Router>
   );

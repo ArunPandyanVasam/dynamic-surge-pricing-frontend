@@ -13,14 +13,23 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
     const basePrice = dish.price * quantity;
     const weatherSurcharge = (basePrice * 0.2).toFixed(2); // 20% of base price
     const trafficSurcharge = (basePrice * 0.3).toFixed(2); // 30% of base price
-    const totalSurgePrice = (basePrice + parseFloat(weatherSurcharge) + parseFloat(trafficSurcharge)).toFixed(2);
-    
-    setSurgePricing({ basePrice, weatherSurcharge, trafficSurcharge, totalSurgePrice });
+    const totalSurgePrice = (
+      basePrice +
+      parseFloat(weatherSurcharge) +
+      parseFloat(trafficSurcharge)
+    ).toFixed(2);
+
+    setSurgePricing({
+      basePrice,
+      weatherSurcharge,
+      trafficSurcharge,
+      totalSurgePrice,
+    });
   };
 
   const handleOrderConfirm = () => {
     navigate("/order-confirmation", {
-      state: { dish, quantity, surgePricing, location }
+      state: { dish, quantity, surgePricing, location },
     });
   };
 
@@ -39,13 +48,15 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
         </Modal.Header>
         <Modal.Body className={styles.modalBody}>
           <h5>{dish.name}</h5>
-          <p>⭐ {dish.rating} | ${dish.price * quantity}</p>
+          <p>
+            ⭐ {dish.rating} | ${dish.price * quantity}
+          </p>
           <p>{dish.description}</p>
           <Form.Group>
             <Form.Label>Enter Location</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter your city/address"
+              placeholder="Enter Destination"
               className={styles.inputField}
               value={location}
               onChange={(e) => setLocation(e.target.value)}
@@ -73,8 +84,12 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
                   <td>${surgePricing.trafficSurcharge}</td>
                 </tr>
                 <tr>
-                  <td><strong>Total Surge Price</strong></td>
-                  <td><strong>${surgePricing.totalSurgePrice}</strong></td>
+                  <td>
+                    <strong>Total Surge Price</strong>
+                  </td>
+                  <td>
+                    <strong>${surgePricing.totalSurgePrice}</strong>
+                  </td>
                 </tr>
               </tbody>
             </Table>
@@ -85,7 +100,10 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
             Cancel
           </Button>
           {!surgePricing ? (
-            <Button className={styles.btnSuccess} onClick={handleGetSurgePricing}>
+            <Button
+              className={styles.btnSuccess}
+              onClick={handleGetSurgePricing}
+            >
               Get Surge Pricing
             </Button>
           ) : (

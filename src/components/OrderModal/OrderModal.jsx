@@ -59,7 +59,7 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
             <Form.Label>Enter Location</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter Destination"
+              placeholder="e.g., 1600 Pennsylvania Ave NW, Washington, DC 20500, USA"
               className={styles.inputField}
               value={location}
               onChange={(e) => setLocation(e.target.value)}

@@ -26,7 +26,7 @@ const DishCard = ({ dish, setCart }) => {
           </Button>
         </div>
         <Button variant="primary" onClick={() => setShowModal(true)}>
-          Add to Cart
+          Order Now
         </Button>
       </Card.Body>
       <OrderModal show={showModal} handleClose={() => setShowModal(false)} dish={dish} quantity={quantity} setCart={setCart} />

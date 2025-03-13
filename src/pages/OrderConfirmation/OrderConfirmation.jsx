@@ -7,14 +7,8 @@ const OrderConfirmation = () => {
   const locationData = useLocation();
   const navigate = useNavigate();
 
-  const {
-    dish,
-    quantity,
-    surgePricing,
-    location: userLocation,
-  } = locationData.state || {};
+  const { dish, quantity, surgePricing, location: userLocation } = locationData.state || {};
 
-s
   const [userDetails, setUserDetails] = useState({
     name: "",
     contact: "",
@@ -23,11 +17,9 @@ s
 
   const [error, setError] = useState("");
 
-
   const handleChange = (e) => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
-
 
   const handleConfirmOrder = () => {
     if (!userDetails.name.trim() || !userDetails.contact.trim()) {
@@ -44,31 +36,18 @@ s
     });
   };
 
-  
   if (!dish || !surgePricing) {
-    return (
-      <p className={styles.errorMessage}>
-        No order details found. Please start a new order.
-      </p>
-    );
+    return <p className={styles.errorMessage}>No order details found. Please start a new order.</p>;
   }
 
   return (
     <div className={styles.orderConfirmationContainer}>
       <Card className={styles.orderCard}>
         <Card.Body>
-          <Card.Title className={styles.cardTitle}>
-            Order Confirmation
-          </Card.Title>
-          <p className={styles.orderDetails}>
-            <strong>Dish:</strong> {dish.name} (x{quantity})
-          </p>
-          <p className={styles.orderDetails}>
-            <strong>Location:</strong> {userLocation}
-          </p>
-          <p className={styles.totalPrice}>
-            <strong>Total Price:</strong> <b>${surgePricing.final_price}</b>
-          </p>
+          <Card.Title className={styles.cardTitle}>Order Confirmation</Card.Title>
+          <p className={styles.orderDetails}><strong>Dish:</strong> {dish.name} (x{quantity})</p>
+          <p className={styles.orderDetails}><strong>Location:</strong> {userLocation}</p>
+          <p className={styles.totalPrice}><strong>Total Price:</strong> <b>${surgePricing.final_price}</b></p>
 
           {error && <p className={styles.errorMessage}>{error}</p>}
 
@@ -86,9 +65,7 @@ s
             </Form.Group>
 
             <Form.Group className={styles.formGroup}>
-              <Form.Label className={styles.formLabel}>
-                Contact Number
-              </Form.Label>
+              <Form.Label className={styles.formLabel}>Contact Number</Form.Label>
               <Form.Control
                 className={styles.formControl}
                 type="text"
@@ -100,15 +77,8 @@ s
             </Form.Group>
 
             <Form.Group className={styles.formGroup}>
-              <Form.Label className={styles.formLabel}>
-                Payment Method
-              </Form.Label>
-              <Form.Select
-                className={styles.formSelect}
-                name="paymentMethod"
-                value={userDetails.paymentMethod}
-                onChange={handleChange}
-              >
+              <Form.Label className={styles.formLabel}>Payment Method</Form.Label>
+              <Form.Select className={styles.formSelect} name="paymentMethod" value={userDetails.paymentMethod} onChange={handleChange}>
                 <option value="Credit Card">Credit Card</option>
                 <option value="Debit Card">Debit Card</option>
                 <option value="PayPal">PayPal</option>
@@ -116,10 +86,7 @@ s
               </Form.Select>
             </Form.Group>
 
-            <Button
-              className={styles.confirmButton}
-              onClick={handleConfirmOrder}
-            >
+            <Button className={styles.confirmButton} onClick={handleConfirmOrder}>
               Confirm Order
             </Button>
           </Form>

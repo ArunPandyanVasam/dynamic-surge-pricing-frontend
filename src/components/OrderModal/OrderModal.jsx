@@ -15,14 +15,19 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
       alert("Please enter a valid location.");
       return;
     }
-  
+
     try {
       const response = await axios.post("http://127.0.0.1:5000/get-weather", {
         address: location,
         base_price: dish.price * quantity,
       });
+
       setSurgePricing({
-        totalSurgePrice: response.data.total_price.toFixed(2),
+        basePrice: response.data.base_price.toFixed(2),
+        surgePrice: response.data.surge_price.toFixed(2),
+        totalPrice: response.data.total_price.toFixed(2),
+        tax: response.data.tax.toFixed(2),
+        finalPrice: response.data.final_price.toFixed(2),
       });
     } catch (error) {
       console.error("Error fetching surge price:", error);
@@ -70,8 +75,24 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
             <Table striped bordered hover className={styles.surgeTable}>
               <tbody>
                 <tr>
-                  <td><strong>Total Surge Price</strong></td>
-                  <td><strong>${surgePricing.totalSurgePrice}</strong></td>
+                  <td><strong>Base Price</strong></td>
+                  <td><strong>${surgePricing.basePrice}</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Surge Price</strong></td>
+                  <td><strong>${surgePricing.surgePrice}</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Total Price (Before Tax)</strong></td>
+                  <td><strong>${surgePricing.totalPrice}</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Tax</strong></td>
+                  <td><strong>${surgePricing.tax}</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Total Price (After Tax)</strong></td>
+                  <td><strong>${surgePricing.finalPrice}</strong></td>
                 </tr>
               </tbody>
             </Table>

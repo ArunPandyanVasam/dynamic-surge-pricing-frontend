@@ -9,7 +9,7 @@ const Header = ({ cartCount }) => {
   return (
     <Navbar className={styles.navbar}>
       <Container>
-        <Navbar.Brand href="/"> 🍽️ Foodie App </Navbar.Brand>
+        <Navbar.Brand href="/"> 🍽️ Foodie</Navbar.Brand>
         {/* <Link to="/cart" className={styles.cartIcon}>
           <FaShoppingCart size={24} />
           <span className={styles.cartCount}>{cartCount}</span>

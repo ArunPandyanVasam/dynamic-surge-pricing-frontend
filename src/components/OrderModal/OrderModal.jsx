@@ -22,13 +22,7 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
         base_price: dish.price * quantity,
       });
 
-      setSurgePricing({
-        basePrice: response.data.base_price.toFixed(2),
-        surgePrice: response.data.surge_price.toFixed(2),
-        totalPrice: response.data.total_price.toFixed(2),
-        tax: response.data.tax.toFixed(2),
-        finalPrice: response.data.final_price.toFixed(2),
-      });
+      setSurgePricing(response.data);
     } catch (error) {
       console.error("Error fetching surge price:", error);
       alert("Failed to fetch surge pricing. Try again.");
@@ -76,23 +70,19 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
               <tbody>
                 <tr>
                   <td><strong>Base Price</strong></td>
-                  <td><strong>${surgePricing.basePrice}</strong></td>
+                  <td>${surgePricing.base_price}</td>
                 </tr>
                 <tr>
                   <td><strong>Surge Price</strong></td>
-                  <td><strong>${surgePricing.surgePrice}</strong></td>
+                  <td>${surgePricing.surge_price}</td>
                 </tr>
                 <tr>
-                  <td><strong>Total Price (Before Tax)</strong></td>
-                  <td><strong>${surgePricing.totalPrice}</strong></td>
+                  <td><strong>Tax (10%)</strong></td>
+                  <td>${surgePricing.tax}</td>
                 </tr>
                 <tr>
-                  <td><strong>Tax</strong></td>
-                  <td><strong>${surgePricing.tax}</strong></td>
-                </tr>
-                <tr>
-                  <td><strong>Total Price (After Tax)</strong></td>
-                  <td><strong>${surgePricing.finalPrice}</strong></td>
+                  <td><strong>Total Price</strong></td>
+                  <td><strong>${surgePricing.final_price}</strong></td>
                 </tr>
               </tbody>
             </Table>

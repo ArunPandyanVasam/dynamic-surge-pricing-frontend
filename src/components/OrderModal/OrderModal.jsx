@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import styles from "./OrderModal.module.css";
 
 const OrderModal = ({ show, handleClose, dish, quantity }) => {
@@ -8,36 +9,39 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
   const [surgePricing, setSurgePricing] = useState(null);
   const navigate = useNavigate();
 
-  const handleGetSurgePricing = () => {
-    // Dynamic surge pricing logic
-    const basePrice = dish.price * quantity;
-    const weatherSurcharge = (basePrice * 0.2).toFixed(2); // 20% of base price
-    const trafficSurcharge = (basePrice * 0.3).toFixed(2); // 30% of base price
-    const totalSurgePrice = (
-      basePrice +
-      parseFloat(weatherSurcharge) +
-      parseFloat(trafficSurcharge)
-    ).toFixed(2);
-
-    setSurgePricing({
-      basePrice,
-      weatherSurcharge,
-      trafficSurcharge,
-      totalSurgePrice,
-    });
+  // Fetch surge pricing from Flask API
+  const handleGetSurgePricing = async () => {
+    if (!location.trim()) {
+      alert("Please enter a valid location.");
+      return;
+    }
+  
+    try {
+      const response = await axios.post("http://127.0.0.1:5000/get-weather", {
+        address: location,
+        base_price: dish.price * quantity,
+      });
+      setSurgePricing({
+        totalSurgePrice: response.data.total_price.toFixed(2),
+      });
+    } catch (error) {
+      console.error("Error fetching surge price:", error);
+      alert("Failed to fetch surge pricing. Try again.");
+    }
   };
 
+  // Handle order confirmation
   const handleOrderConfirm = () => {
     navigate("/order-confirmation", {
       state: { dish, quantity, surgePricing, location },
     });
   };
 
+  // Reset state when modal is closed
   const handleCancel = () => {
-    // Reset the location and surgePricing when the modal is closed
     setLocation("");
     setSurgePricing(null);
-    handleClose(); // This will close the modal
+    handleClose();
   };
 
   return (
@@ -48,10 +52,9 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
         </Modal.Header>
         <Modal.Body className={styles.modalBody}>
           <h5>{dish.name}</h5>
-          <p>
-            ⭐ {dish.rating} | ${dish.price * quantity}
-          </p>
+          <p>⭐ {dish.rating} | ${dish.price * quantity}</p>
           <p>{dish.description}</p>
+
           <Form.Group>
             <Form.Label>Enter Location</Form.Label>
             <Form.Control
@@ -62,34 +65,13 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
               onChange={(e) => setLocation(e.target.value)}
             />
           </Form.Group>
+
           {surgePricing && (
             <Table striped bordered hover className={styles.surgeTable}>
-              <thead>
-                <tr>
-                  <th>Factor</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
               <tbody>
                 <tr>
-                  <td>Base Price</td>
-                  <td>${surgePricing.basePrice}</td>
-                </tr>
-                <tr>
-                  <td>Weather Surcharge (20%)</td>
-                  <td>${surgePricing.weatherSurcharge}</td>
-                </tr>
-                <tr>
-                  <td>Traffic Surcharge (30%)</td>
-                  <td>${surgePricing.trafficSurcharge}</td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Total Surge Price</strong>
-                  </td>
-                  <td>
-                    <strong>${surgePricing.totalSurgePrice}</strong>
-                  </td>
+                  <td><strong>Total Surge Price</strong></td>
+                  <td><strong>${surgePricing.totalSurgePrice}</strong></td>
                 </tr>
               </tbody>
             </Table>
@@ -100,10 +82,7 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
             Cancel
           </Button>
           {!surgePricing ? (
-            <Button
-              className={styles.btnSuccess}
-              onClick={handleGetSurgePricing}
-            >
+            <Button className={styles.btnSuccess} onClick={handleGetSurgePricing}>
               Get Surge Pricing
             </Button>
           ) : (

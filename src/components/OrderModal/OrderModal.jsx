@@ -9,7 +9,6 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
   const [surgePricing, setSurgePricing] = useState(null);
   const navigate = useNavigate();
 
-  // Fetch surge pricing from Flask API
   const handleGetSurgePricing = async () => {
     if (!location.trim()) {
       alert("Please enter a valid location.");
@@ -29,14 +28,12 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
     }
   };
 
-  // Handle order confirmation
   const handleOrderConfirm = () => {
     navigate("/order-confirmation", {
       state: { dish, quantity, surgePricing, location },
     });
   };
 
-  // Reset state when modal is closed
   const handleCancel = () => {
     setLocation("");
     setSurgePricing(null);

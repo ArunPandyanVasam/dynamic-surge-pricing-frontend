@@ -16,7 +16,7 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
     }
 
     try {
-      const response = await axios.post("http://127.0.0.1:5000/get-weather", {
+      const response = await axios.post("https://dynamic-surge-pricing-backend.onrender.com/get-weather", {
         address: location,
         base_price: dish.price * quantity,
       });

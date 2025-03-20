@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import styles from "./DishCard.module.css";
@@ -9,6 +8,11 @@ const DishCard = ({ dish, setCart }) => {
   const [quantity, setQuantity] = useState(1);
   const [showModal, setShowModal] = useState(false);
 
+  const handleClose = () => {
+    setShowModal(false);
+    setQuantity(1); // Reset quantity when modal is closed
+  };
+
   return (
     <Card className={styles.dishCard}>
       <Card.Img variant="top" src={dish.img} className={styles.dishCardImg} />
@@ -16,6 +20,7 @@ const DishCard = ({ dish, setCart }) => {
         <Card.Title className={styles.dishCardTitle}>{dish.name}</Card.Title>
         <Card.Text className={styles.dishCardDescription}>{dish.description}</Card.Text>
         <Card.Text className={styles.dishCardPrice}>⭐ {dish.rating} | ${dish.price}</Card.Text>
+
         <div className={styles.quantitySelector}>
           <Button variant="outline-secondary" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
             <FaMinus />
@@ -25,11 +30,13 @@ const DishCard = ({ dish, setCart }) => {
             <FaPlus />
           </Button>
         </div>
+
         <Button variant="primary" onClick={() => setShowModal(true)}>
           Order Now
         </Button>
       </Card.Body>
-      <OrderModal show={showModal} handleClose={() => setShowModal(false)} dish={dish} quantity={quantity} setCart={setCart} />
+
+      <OrderModal show={showModal} handleClose={handleClose} dish={dish} quantity={quantity} setCart={setCart} />
     </Card>
   );
 };

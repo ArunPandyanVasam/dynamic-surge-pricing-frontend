@@ -39,7 +39,7 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
   const handleCancel = () => {
     setLocation("");
     setSurgePricing(null);
-    handleClose();
+    handleClose(); // Reset quantity in parent
   };
 
   return (
@@ -50,9 +50,7 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
         </Modal.Header>
         <Modal.Body className={styles.modalBody}>
           <h5>{dish.name}</h5>
-          <p>
-            ⭐ {dish.rating} | ${dish.price * quantity}
-          </p>
+          <p>⭐ {dish.rating} | ${dish.price * quantity}</p>
           <p>{dish.description}</p>
 
           {!surgePricing && (
@@ -71,65 +69,21 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
           {surgePricing && (
             <Table striped bordered hover className={styles.surgeTable}>
               <tbody>
-                <tr>
-                  <td>
-                    <strong>Temperature</strong>
-                  </td>
-                  <td>{surgePricing.temperature}°C</td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Weather</strong>
-                  </td>
-                  <td>{surgePricing.weather_description}</td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Base Price</strong>
-                  </td>
-                  <td>${surgePricing.base_price}</td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Surge Price</strong>
-                  </td>
-                  <td>${surgePricing.surge_price}</td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Total Price Before Tax</strong>
-                  </td>
-                  <td>
-                    <strong>${surgePricing.final_price_before}</strong>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Tax (10%)</strong>
-                  </td>
-                  <td>${surgePricing.tax}</td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Total Price After Tax</strong>
-                  </td>
-                  <td>
-                    <strong>${surgePricing.final_price_after}</strong>
-                  </td>
-                </tr>
+                <tr><td><strong>Temperature</strong></td><td>{surgePricing.temperature}°C</td></tr>
+                <tr><td><strong>Weather</strong></td><td>{surgePricing.weather_description}</td></tr>
+                <tr><td><strong>Base Price</strong></td><td>${surgePricing.base_price}</td></tr>
+                <tr><td><strong>Surge Price</strong></td><td>${surgePricing.surge_price}</td></tr>
+                <tr><td><strong>Total Price Before Tax</strong></td><td><strong>${surgePricing.final_price_before}</strong></td></tr>
+                <tr><td><strong>Tax (10%)</strong></td><td>${surgePricing.tax}</td></tr>
+                <tr><td><strong>Total Price After Tax</strong></td><td><strong>${surgePricing.final_price_after}</strong></td></tr>
               </tbody>
             </Table>
           )}
         </Modal.Body>
         <Modal.Footer className={styles.modalFooter}>
-          <Button className={styles.btnSecondary} onClick={handleCancel}>
-            Cancel
-          </Button>
+          <Button className={styles.btnSecondary} onClick={handleCancel}>Cancel</Button>
           {!surgePricing ? (
-            <Button
-              className={styles.btnSuccess}
-              onClick={handleGetSurgePricing}
-            >
+            <Button className={styles.btnSuccess} onClick={handleGetSurgePricing}>
               Get Surge Pricing
             </Button>
           ) : (

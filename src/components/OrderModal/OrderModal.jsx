@@ -14,13 +14,17 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
       alert("Please enter a valid location.");
       return;
     }
-
+  
     try {
-      const response = await axios.post("https://dynamic-surge-pricing-backend.onrender.com/get-weather", {
-        address: location,
-        base_price: dish.price * quantity,
-      });
-
+      const response = await axios.post(
+        "https://dynamic-surge-pricing-backend.onrender.com/get-weather",
+        {
+          address: location,
+          base_price: dish.price * quantity,
+        }
+      );
+  
+      console.log("Surge Pricing Response:", response.data);  // Log response here
       setSurgePricing(response.data);
     } catch (error) {
       console.error("Error fetching surge price:", error);
@@ -74,6 +78,12 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
                     <strong>Temperature</strong>
                   </td>
                   <td>{surgePricing.temperature}°C</td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Weather</strong>
+                  </td>
+                  <td>{surgePricing.weather_description}</td>
                 </tr>
                 <tr>
                   <td>

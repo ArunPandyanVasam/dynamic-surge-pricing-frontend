@@ -73,9 +73,9 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
                 <tr><td><strong>Weather</strong></td><td>{surgePricing.weather_description}</td></tr>
                 <tr><td><strong>Base Price</strong></td><td>${surgePricing.base_price}</td></tr>
                 <tr><td><strong>Surge Price</strong></td><td>${surgePricing.surge_price}</td></tr>
-                <tr><td><strong>Total Price Before Tax</strong></td><td><strong>${surgePricing.final_price_before}</strong></td></tr>
+                <tr><td><strong>Total Price (Before Tax)</strong></td><td><strong>${surgePricing.final_price_before}</strong></td></tr>
                 <tr><td><strong>Tax (10%)</strong></td><td>${surgePricing.tax}</td></tr>
-                <tr><td><strong>Total Price After Tax</strong></td><td><strong>${surgePricing.final_price_after}</strong></td></tr>
+                <tr><td><strong>Total Price (After Tax)</strong></td><td><strong>${surgePricing.final_price_after}</strong></td></tr>
               </tbody>
             </Table>
           )}

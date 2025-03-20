@@ -1,4 +1,4 @@
-/* Modal Container */
+
 .modal-content {
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -8,7 +8,7 @@
     transition: transform 0.2s ease-in-out;
   }
   
-  /* Modal Header */
+
   .modal-header {
     border-bottom: none;
     text-align: center;
@@ -17,13 +17,13 @@
     color: #333;
   }
   
-  /* Modal Body */
+
   .modal-body {
     text-align: center;
     padding: 15px 20px;
   }
   
-  /* Dish Details */
+
   .modal-body h5 {
     font-size: 1.4rem;
     font-weight: bold;
@@ -36,7 +36,7 @@
     margin-bottom: 15px;
   }
   
-  /* Input Field */
+
   .modal-body input {
     width: 100%;
     padding: 10px;
@@ -51,14 +51,14 @@
     border-color: #ff7f50;
   }
   
-  /* Modal Footer (Buttons) */
+
   .modal-footer {
     display: flex;
     justify-content: space-between;
     padding-top: 10px;
   }
   
-  /* Button Styling */
+
   .modal-footer button {
     flex: 1;
     margin: 0 5px;
@@ -87,7 +87,7 @@
     background: #219150;
   }
   
-  /* RESPONSIVENESS */
+
   @media (max-width: 600px) {
     .modal-content {
       max-width: 90%;

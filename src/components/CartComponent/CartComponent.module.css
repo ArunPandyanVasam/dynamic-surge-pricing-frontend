@@ -1,6 +1,4 @@
-/* CartComponent.module.css */
 
-/* Main container with a max-width for larger screens */
 .cartContainer {
   max-width: 1200px;
   margin: 0 auto;
@@ -9,7 +7,7 @@
   background-color: #f9f9f9;
 }
 
-/* Title of the cart component */
+
 .cartTitle {
   text-align: center;
   font-size: 2rem;
@@ -19,7 +17,7 @@
   letter-spacing: 0.5px;
 }
 
-/* List styling for the cart items */
+
 .cartList {
   border-radius: 12px;
   overflow: hidden;
@@ -27,7 +25,7 @@
   background-color: white;
 }
 
-/* Styling for each cart item */
+
 .cartItem {
   display: flex;
   justify-content: space-between;
@@ -45,7 +43,7 @@
   border-bottom: none;
 }
 
-/* Item details styling (name, price, quantity) */
+
 .itemDetails {
   flex: 1;
   display: flex;
@@ -65,7 +63,7 @@
   letter-spacing: 0.5px;
 }
 
-/* Styling for quantity control buttons */
+
 .quantityControls {
   display: flex;
   align-items: center;
@@ -117,7 +115,7 @@
   box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
 }
 
-/* Media Queries for responsiveness */
+
 @media (max-width: 1024px) {
   .cartTitle {
     font-size: 1.8rem;

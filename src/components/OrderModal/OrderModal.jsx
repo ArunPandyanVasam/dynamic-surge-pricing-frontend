@@ -23,8 +23,6 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
           base_price: dish.price * quantity,
         }
       );
-  
-      console.log("Surge Pricing Response:", response.data);  // Log response here
       setSurgePricing(response.data);
     } catch (error) {
       console.error("Error fetching surge price:", error);

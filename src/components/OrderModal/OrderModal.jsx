@@ -97,7 +97,7 @@ const OrderModal = ({ show, handleClose, dish, quantity }) => {
                 </tr>
                 <tr>
                   <td>
-                    <strong>Total Price After Tax</strong>
+                    <strong>Total Price Before Tax</strong>
                   </td>
                   <td>
                     <strong>${surgePricing.final_price_before}</strong>

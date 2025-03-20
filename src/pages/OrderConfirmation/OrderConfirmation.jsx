@@ -31,7 +31,7 @@ const OrderConfirmation = () => {
       state: {
         name: userDetails.name,
         contact: userDetails.contact,
-        totalPrice: surgePricing.final_price, 
+        totalPrice: surgePricing.final_price_after, 
       },
     });
   };
@@ -47,7 +47,7 @@ const OrderConfirmation = () => {
           <Card.Title className={styles.cardTitle}>Order Confirmation</Card.Title>
           <p className={styles.orderDetails}><strong>Dish:</strong> {dish.name} (x{quantity})</p>
           <p className={styles.orderDetails}><strong>Location:</strong> {userLocation}</p>
-          <p className={styles.totalPrice}><strong>Total Price:</strong> <b>${surgePricing.final_price}</b></p>
+          <p className={styles.totalPrice}><strong>Total Price:</strong> <b>${surgePricing.final_price_after}</b></p>
 
           {error && <p className={styles.errorMessage}>{error}</p>}
 
